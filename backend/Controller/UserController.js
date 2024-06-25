@@ -1,32 +1,49 @@
 import User from "../Model/user.js";
 
-export const registerUser = () =>{
-	try{
-        const user = {
-        name,
-        email,
-        password,
-        phoneNo,
-        role
-    } = req.body;
+export const registerUser = (req, res) => {
+    try {
+        const { 
+            name, 
+            email, 
+            password, 
+            phoneNo, 
+            role 
+        } = req.body;
 
-    const newUser = new User(user);
-    newUser.save()
-    .then(() => {
-        res.status(201).json({
-            message: 'User created'})
-        })
-    }catch(error){
+        const newUser = new User({
+            name,
+            email,
+            password,
+            phoneNo,
+            role
+        });
+        
+        const isEmail = User.findOne({email});
+        if(isEmail){
+            return res.status(400).json({
+                message: 'Email already exists'
+            });
+        }
+        else{
+            newUser.save()
+            .then(() => {
+                res.status(201).json({
+                    message: 'User created'
+                });
+            });
+        }
+    } catch (error) {
         res.status(500).json({
             message: 'Internal server error'
-        })
+        });
+        console.log(error);
     }
-}
+};
 
-export const loginUser = () =>{
+export const loginUser = (req, res) =>{
     try{
         const {email, password} = req.body
-        const isUser = User.findOne(email | email);
+        const isUser = User.findOne({email});
         if(isUser){
             if(isUser.password === password){
                 res.status(200).json({
