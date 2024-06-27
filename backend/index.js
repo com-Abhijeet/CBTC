@@ -1,3 +1,4 @@
+import eventRouter from "./Route/EventRouter.js";
 import UserRouter from "./Route/UserRouter.js";
 import Database from "./config/database.js";
 import express from "express";
@@ -7,6 +8,7 @@ Database();
 app.use(express.json());
 
 app.use('/user', UserRouter);
+app.use('/Event',eventRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
