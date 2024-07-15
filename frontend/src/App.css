@@ -1,0 +1,364 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.navbar {
+  padding: 0.5% 2%;
+  justify-content: space-between;
+  border: 2px solid rgb(15, 101, 206);
+}
+.navbar-expand-lg .navbar-collapse{
+  justify-content: space-between;
+
+}
+.navbar-brand-img{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: center;
+}
+.brand-logo{
+  width: 20%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: -5%;
+}
+.avatar{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 0% 10px;
+  padding: 0px;
+}
+.nav-link{
+  cursor:pointer;
+}
+.my-lg-0{
+  display: flex;
+  justify-content: space-around;
+}
+.jumbotron{
+  text-align: center;
+  margin: 1% 0;
+}
+.Card-Container{
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(30, 30, 30);
+}
+.card{
+  width: 30%;
+  margin: 0 1% 5% 0;
+  box-shadow: 19px 22px 61px -7px rgba(122,101,122,1);
+}
+.card:hover{
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+.card-img-top{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.Events-Header{
+  text-align: center;
+}
+.Events-Header {
+  text-align: center;
+}
+
+.Events-Container {
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Event-card-details {
+  width: 100%;
+  margin: 1% auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* Ensure even spacing between items */
+  padding: 1%;
+  border: 1px solid #0400ff5a;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: #0400ff5a; /* Semi-transparent background */
+}
+.Event-card-detail-group{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  text-align: left;
+}
+.Event-card-detail-field{
+  margin: 1% 0;
+
+}
+/* LOGIN CSS */
+.Login-Container{
+  width: 30%;
+  height: 70vh;
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  border: 2px solid rgb(81, 140, 249);
+  border-radius: 50px;
+}
+.Login-Header{
+  text-align: center;
+  margin: 2% 0;
+}
+.form-group{
+  width: 100%;
+  margin: 3% 0;
+}
+.login-btn{
+  width:100%;
+}
+.header-container-event-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 1% 0;
+}
+/* EVENT FORM */
+.event-form-sb-header{
+  text-align: center;
+  margin-bottom: 0;
+}
+.event-form-cnt{
+  width: 80%;
+  margin: 2% auto;
+}
+.event-form{
+  display: flex;
+  flex-direction: column;
+}
+.input-group.mb-3{
+  margin: -0.5rem !important;
+}
+.input-group-text{
+  width: 3%;
+  height: 2%;
+  /* margin-top: 1%; */
+  align-self: center;
+}
+.event-form-input{
+  width: 80%;
+  margin: 1% ;
+}
+.add-vendor-btn{
+  width: 15%;
+  margin: 1% ;
+  align-self: end;
+}
+.form-file-label{
+  text-align: center;
+  width: 15%;
+  margin: 1.5% 0 ;
+}
+.vendor-input-group .form-control{
+  margin-top: 0.5%; /* Remove margin from the last input in the group */
+}
+.event-form-footer{
+  width: 80%;
+  margin: 0 10% 10% 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 1%;
+  padding: 1%;
+}
+.form-check{
+  display:flex;
+  flex-direction: column;
+}
+.terms-checkbox{
+  background-color: rgb(227, 227, 227);
+  border: 1px solid rgb(0, 0, 0);
+}
+.terms-label{
+  margin: 0 0.5% ;
+}
+.create-event-btn{
+  align-self: flex-end;
+}
+.event-image {
+  position: relative;
+}
+.event-image img{
+  width: 100%;
+  height:92vh;
+  object-fit:contain;
+}
+.event-details {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Fog glass effect */
+  padding: 1%;
+  border-radius: 10px;
+}
+.event-detail-group{
+  display: flex;
+  /* padding: 0 5%; */
+  flex-direction: column;
+  justify-content: start;
+  justify-items: center;
+}
+.book-ticket-btn{
+  width: 100%;
+}
+/*TICKET FORM CSS*/
+.ticket-header{
+  margin: 2% 10%;
+}
+.tkt-hdr{
+  text-align: center;
+  font-size: 2rem;
+}
+.ticket-form-container{
+  width: 80%;
+  margin: 1% auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.7); 
+}
+.ticket-form-group{
+  margin: 0.5% 0;
+}
+.ticket-form-btn{
+  width: 10%;
+  margin:1% 2%;
+  align-self: flex-end;
+}
+/* Payment CSS */
+.wt-pymnt-cnt{
+  width: 80%;
+  margin: 15% auto 2% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.waiting-txt{
+  text-align: center;
+  font-size: 1.5rem;
+}
+.pay-cnt{
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pay-now-btn{
+  align-self: center;
+  justify-self: center;
+}
+.filter-bar{
+  width: 100%;
+  margin: 0% auto;
+  padding: 0.8% 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: none;
+
+}
+.filter-search-box{
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.datepicker-container {
+  position: relative;
+}
+
+.custom-datepicker {
+  z-index: 1000;
+   /* Ensure this is higher than the overlapping elements */
+}
+.react-datepicker__portal {
+  z-index: 1000; /* Ensure this is higher than the overlapping elements */
+  position: absolute; /* Ensure it is positioned correctly */
+}
+
+/* My bookings css*/
+.booking-container{
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+/* Footer CSS */
+.footer-container{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:20% 0 2% 0 ;
+  padding: 2% 10%;
+  background-color: rgb(157, 157, 157);
+  bottom: 0px;
+}
+.sub-container{
+  width: 80%;
+  margin: 2% auto 3% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer-container-1{
+  position: relative;
+  width: 30%;
+}
+.ticket-card{
+  width: 100%;
+  margin: 1% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1%;
+  border: 1px solid #0400ff5a;
+  border-radius: 10px;
+  background-color: #0400ff5a; 
+  box-shadow : none;
+  /* Semi-transparent background */
+}
+.ticket-atnde-container{
+  margin: 1% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

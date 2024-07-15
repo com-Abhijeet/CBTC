@@ -1,6 +1,7 @@
 import User from "../Model/user.js";
 import bcrypt, { genSalt } from 'bcrypt'
 import { createToken } from "../helper/userHelper.js";
+import  jwt   from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
     try {
@@ -54,6 +55,9 @@ export const loginUser = async (req, res) =>{
         } = req.body
         
         const isUser = await User.findOne({email});
+            const name = isUser.name;
+        
+        console.log(name);
         
         if(!isUser){
             res.status(404).json({
@@ -62,17 +66,24 @@ export const loginUser = async (req, res) =>{
         }
         else{
             const isPassword = await bcrypt.compare(password, isUser.password);
-            if(isPassword){
-                const token = createToken(isUser._id, isUser.role);
+            if(isPassword){  
+                const token = createToken(isUser._id, isUser.name);
+                console.log("Generated token" , token);
+                  
                 res.cookie('token', token, {
-                    httpOnly: true,
+                    httpOnly: false,
                     maxAge: 24*60*60*1000,
-                    secure : true
-                })
+                    secure : process.env.NODE_ENV === 'production',
+                    sameSite: 'Strict'
+                    
+                });
+                console.log("Token set in Cokkie");
                 res.status(200).json({
                     message: 'Login successful',
-                    token
-                })
+                    token ,
+                    name
+                });
+
             }
             else{
                 res.status(400).json({
@@ -82,8 +93,46 @@ export const loginUser = async (req, res) =>{
         }
     }catch(error){
         res.status(500).json({
-            message: ' Internal Server Error'
+            message: ' Internal Server Error' , error
         })
         console.log(error);
+    }
+}
+
+export const updateUserDetails = async (req,res) =>{
+    try{
+        const{
+            id
+        } = req.params;
+        const{
+            name,
+            email,
+            phoneNo,
+            role
+        } = req.body;
+        const isUser = await User.findOne({id});
+        if(!isUser){
+            res.status(404).json({
+                message: 'User not found'
+            })
+        }
+        else{
+            const updatedUser = await User.findByIdAndUpdate(i11d,{
+                name,
+                email,
+                phoneNo,
+                role
+            });
+            console.log(updatedUser);
+            res.status(200).json({
+                message: 'User updated'
+            })
+        }
+            
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            message : ' Internal Server Error'
+        })
     }
 }

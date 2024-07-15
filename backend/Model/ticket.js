@@ -1,49 +1,48 @@
-import { Transaction } from "mongodb";
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import AutoIncrement from 'mongoose'
 
-const ticketSchema = new mongoose.Schema({
-    event : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Event'
+const TicketSchema = new mongoose.Schema({
+    eventId: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event', 
+        required: true 
     },
-    ticket : [{
-        attendee : {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'User'
+    attendees: [{
+        name: { 
+            type: String, 
         },
-        status : {
-            type : String,
-            enum : ['booked', 'cancelled'],
-            default : 'booked'
+        contact: { 
+            type: Number,  
         },
-        seat : {
-            type : Number,
-            required : false
-        },   
-        price : {
-            type : Number,
-            required : true
+        gender: { 
+            type: String,  
         },
-        paymentDetails : {
-            TransactionId : String,
-            method : {
-                type : String,
-                enum : ['card', 'cash', 'upi'],
-                required : true
-            },  
-            status : {
-                type : String,
-                enum : ['success', 'failed'],
-                default : 'success'
-            },
-            time : {
-                type : Date,
-                default : Date.now()
-            } 
-        }
-    }]
-})
+        age: { 
+            type: Number,  
+        },
+    }],
+    paymentId: { 
+        type: String, 
+        unique: true
+        },
+    paymentStatus: { 
+        type: String, 
+        enum: ['Pending', 'Completed', 'Failed'], 
+        default: 'Pending' 
+        },
+    totalAmount: { 
+        type: Number, 
+        required: true 
+        },
+    purchaseDate: { 
+        type: Date, 
+        default: Date.now 
+        },
+    bookedBy: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true 
+    },
+});
 
-const Ticket = mongoose.model('Ticket', ticketSchema);
-
-export default Ticket;
+export default mongoose.model('Ticket', TicketSchema);

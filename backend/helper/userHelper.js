@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-export const createToken = (id ,role) =>{
+export const createToken = (id ,name) =>{
     const JWT_SECRET = 'KingOfHill';
-    return jwt.sign({id, role}, JWT_SECRET, {
+    return jwt.sign({id, name}, JWT_SECRET, {
         expiresIn: '1d'
     })
 }

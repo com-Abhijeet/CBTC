@@ -1,42 +1,89 @@
 import mongoose from "mongoose";
 
-const eventSchema =  new mongoose.Schema({
-    name : String,
-    description : String,
-    date : Date,
-    location : String,
-    creator : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'User'
+const eventSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+  },
+  time: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+  },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  budget: {
+    type: Number,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+  coverBanner: String,
+  isPrivate: {
+    type: Boolean,
+    default: false,
+  },
+  host: {
+    name: {
+      type: String,
+      required: true,
     },
-    vendors : [{
-        id : {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'User'
-        },
-        name : String,
-        contact : Number,
-        task : String,
-        status : String
-    }],
-    budget : {
-        type : Number,
-        default : 0
+    email: {
+      type: String,
+      required: true,
     },
-    attendees : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'User'
-    }],
-    type : {
-        type : String,
-        enum : ['conferences', 'weddings', 'parties']
+    contact: {
+      type: String,
+      required: true,
     },
-    isPrivate : {
-        type : Boolean,
-        default : false
+    altContact: String,
+    status: {
+      type: String,
+      default: 'Invited',
     },
-})
+  },
+  vendors: [{
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    role: String,
+    cost: {
+      type: Number,
+      required: true,
+    },
+    amountPaid: {
+      type: Number,
+      required: true,
+    },
+    amountDue: {
+      type: Number,
+      required: true,
+    },
+  }],
+  ticketPrice :{
+    type: Number,
+    default : 800
+  }
 
-const Event = mongoose.model('Event', eventSchema)
+});
 
-export default Event;
+export default mongoose.model('Event', eventSchema);
